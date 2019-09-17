@@ -1,7 +1,15 @@
-import React from 'react';
+import React from 'react'
+import { Router } from 'react-router-dom'
+
+import history from 'history'
+import Routes from './routes'
 
 function App() {
-  return <div>Olá Mundo</div>;
+  return (
+    <Router history={history}>
+      <Routes />
+    </Router>
+  )
 }
 
-export default App;
+export default App
