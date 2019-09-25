@@ -6,7 +6,7 @@ import AuthLayout from '../pages/_layouts/auth'
 import DefaultLayout from '../pages/_layouts/default'
 
 export default function Routes({ component: Component, isPrivate, ...rest }) {
-  const signed = true
+  const signed = false
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />
