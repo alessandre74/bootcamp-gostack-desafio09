@@ -23,7 +23,6 @@ export const Content = styled.div`
       border-radius: 6px;
       background-color: #d44059;
       color: #fff;
-      font-size: 22px;
       font-weight: bold;
       padding: 14px 26px;
     }

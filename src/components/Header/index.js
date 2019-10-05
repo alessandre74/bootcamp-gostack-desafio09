@@ -10,12 +10,14 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <img src={logo} alt="Meetup" />
+          <Link to="/">
+            <img src={logo} alt="Meetup" />
+          </Link>
         </nav>
         <aside>
           <Profile>
             <div>
-              <strong>Diego Fernandes</strong>
+              <strong>Alessandre Livramento</strong>
               <Link to="/profile">Meu perfil</Link>
             </div>
           </Profile>
