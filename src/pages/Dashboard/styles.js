@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin-top: 60px;
-`
-export const Content = styled.div`
-  height: 38px;
-  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  max-width: 940px;
   margin: 0 auto;
+  padding: 0 20px;
 
   header {
-    max-width: 900px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,9 +33,8 @@ export const Content = styled.div`
       }
     }
   }
-
   ul {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 `
 

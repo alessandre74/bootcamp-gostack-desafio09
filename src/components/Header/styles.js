@@ -2,13 +2,15 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
-  padding: 0 30px;
+  margin-bottom: 60px;
 `
 
 export const Content = styled.div`
   height: 92px;
-  max-width: 900px;
+  max-width: 940px;
   margin: 0 auto;
+  padding: 0 20px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;

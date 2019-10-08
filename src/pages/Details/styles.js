@@ -1,22 +1,18 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin-top: 60px;
-`
-
-export const Content = styled.main`
   display: flex;
   flex-direction: column;
-  height: 38px;
-  max-width: 900px;
+  max-width: 940px;
   margin: 0 auto;
+  padding: 0 20px;
 
   header {
     div {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 900px;
+      max-width: 940px;
 
       strong {
         width: 100%;
@@ -42,7 +38,7 @@ export const Content = styled.main`
           margin-top: 50px;
         }
 
-        font-size: 16px;
+        font-size: 18px;
         text-align: justify;
       }
     }
@@ -63,13 +59,15 @@ export const Content = styled.main`
       }
 
       svg {
+        height: 20px;
+        font-size: 20px;
         margin-right: 14px;
       }
 
       span {
-        text-align: center;
-        color: #999;
+        height: 19px;
         font-size: 16px;
+        color: #999;
       }
     }
   }
