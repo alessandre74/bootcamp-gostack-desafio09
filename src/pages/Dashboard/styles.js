@@ -43,7 +43,7 @@ export const MeetupItens = styled.li`
   margin-top: 20px;
   font-size: 20px;
   height: 62px;
-  padding: 14px 26px;
+  padding: 14px 22px;
 
   display: flex;
   justify-content: space-between;
@@ -52,18 +52,13 @@ export const MeetupItens = styled.li`
   strong {
     color: #fff;
   }
-  div {
+  a {
     display: flex;
-    justify-content: center;
     align-items: center;
-    span {
-      color: #999;
-    }
 
-    button {
-      border: 0;
-      margin-left: 40px;
-      background: none;
+    span {
+      margin-right: 40px;
+      color: #999;
     }
   }
 `

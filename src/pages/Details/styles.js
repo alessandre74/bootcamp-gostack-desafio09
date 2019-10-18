@@ -1,11 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   max-width: 940px;
   margin: 0 auto;
+`
+
+export const Content = styled.div`
+  display: block;
   padding: 0 20px;
+  max-width: 940px;
 
   header {
     div {
@@ -34,40 +37,8 @@ export const Container = styled.div`
       color: #fff;
 
       p {
-        & + p {
-          margin-top: 50px;
-        }
-
-        font-size: 18px;
-        text-align: justify;
-      }
-    }
-  }
-
-  footer {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-
-    div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      & + div {
-        margin-left: 40px;
-      }
-
-      svg {
-        height: 20px;
-        font-size: 20px;
-        margin-right: 14px;
-      }
-
-      span {
-        height: 19px;
         font-size: 16px;
-        color: #999;
+        text-align: justify;
       }
     }
   }
@@ -81,7 +52,6 @@ export const DivButton = styled.div`
   a {
     display: flex;
     align-items: center;
-
     width: 100%;
     border: 0;
     border-radius: 6px;
@@ -94,5 +64,23 @@ export const DivButton = styled.div`
       font-size: 16px;
       margin-left: 12px;
     }
+  }
+`
+export const Region = styled.div`
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    height: 20px;
+    font-size: 20px;
+    margin-right: 14px;
+  }
+
+  span {
+    height: 19px;
+    font-size: 16px;
+    color: #999;
+    margin-right: 40px;
   }
 `

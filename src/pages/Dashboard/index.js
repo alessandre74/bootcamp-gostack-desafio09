@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { format, parseISO } from 'date-fns'
+import pt from 'date-fns/locale/pt'
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
@@ -7,7 +9,28 @@ import api from '~/services/api'
 import { Container, MeetupItens } from './styles'
 
 export default function Dashboard() {
-  api.get('meetupUserLogged')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    async function loadMeetups() {
+      const response = await api.get('meetups')
+
+      const dataMeetups = response.data.map(itens => {
+        return {
+          id: itens.id,
+          title: itens.title,
+          date: format(parseISO(itens.date), "dd 'de' MMMM', às' H:mm'h'", {
+            locale: pt,
+          }),
+        }
+      })
+
+      setData(dataMeetups)
+    }
+
+    loadMeetups()
+  }, [])
+
   return (
     <Container>
       <header>
@@ -21,45 +44,20 @@ export default function Dashboard() {
       </header>
 
       <ul>
-        <MeetupItens>
-          <strong>Meus Meetups</strong>
-          <div>
-            <span>24 de junho, ás 20h</span>
-            <button type="button">
-              <Link to="/details">
-                <MdChevronRight size={28} color="#fff" />
-              </Link>
-            </button>
-          </div>
-        </MeetupItens>
-
-        <MeetupItens>
-          <strong>Meus Meetups</strong>
-          <div>
-            <span>24 de junho, ás 20h</span>
-            <button type="button">
+        {data.map(iten => (
+          <MeetupItens key={iten.id}>
+            <strong>{iten.title}</strong>
+            <Link
+              to={{
+                pathname: '/details',
+                state: { id: `${iten.id}` },
+              }}
+            >
+              <span>{iten.date}</span>
               <MdChevronRight size={28} color="#fff" />
-            </button>
-          </div>
-        </MeetupItens>
-        <MeetupItens>
-          <strong>Meus Meetups</strong>
-          <div>
-            <span>24 de junho, ás 20h</span>
-            <button type="button">
-              <MdChevronRight size={28} color="#fff" />
-            </button>
-          </div>
-        </MeetupItens>
-        <MeetupItens>
-          <strong>Meus Meetups</strong>
-          <div>
-            <span>24 de junho, ás 20h</span>
-            <button type="button">
-              <MdChevronRight size={28} color="#fff" />
-            </button>
-          </div>
-        </MeetupItens>
+            </Link>
+          </MeetupItens>
+        ))}
       </ul>
     </Container>
   )
