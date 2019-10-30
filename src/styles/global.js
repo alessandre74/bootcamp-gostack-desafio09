@@ -21,11 +21,11 @@ html, body, #root {
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased !important;
 }
 
 body, input, button {
-  font: 14px 'Roboto', sans-serif;
+  font: 16px 'Roboto', sans-serif;
 }
 
 a {

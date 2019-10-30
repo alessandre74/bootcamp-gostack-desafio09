@@ -9,6 +9,7 @@ export const Content = styled.div`
   display: block;
   padding: 0 20px;
   max-width: 940px;
+  height: 100%;
 
   form {
     display: flex;
@@ -25,9 +26,8 @@ export const Content = styled.div`
       padding: 0 15px;
       color: #ffffff;
       margin: 0 0 20px;
-      opacity: 0.2;
+      opacity: 0.3;
       font-size: 18px;
-      font-family: Helvetica;
 
       &::placeholder {
         color: rgba(255, 255, 255, 0.6);
@@ -35,17 +35,16 @@ export const Content = styled.div`
     }
 
     textarea {
-      height: 200px;
+      height: 140px;
       max-width: 940px;
       font-weight: bold;
       background-color: #000000;
       border: 0;
       border-radius: 6px;
-      padding: 0 15px;
+      padding: 10px 15px;
       color: #ffffff;
       margin-bottom: 20px;
-      opacity: 0.2;
-      font-family: Helvetica;
+      opacity: 0.3;
       font-size: 18px;
 
       &::placeholder {
@@ -59,7 +58,7 @@ export const Content = styled.div`
 
       button {
         display: flex;
-        justify-content: flex-end;
+        align-items: center;
         border: 0;
         border-radius: 6px;
         background-color: #f94d6a;
@@ -68,31 +67,45 @@ export const Content = styled.div`
         padding: 14px 26px;
 
         strong {
-          font-size: 22px;
           margin-left: 10px;
         }
       }
     }
   }
 `
-export const MImage = styled.div`
-  height: 300px;
-  max-width: 940px;
+export const MImage = styled.label`
+  height: 260px;
+  max-width: 100%;
   opacity: 0.4;
   border-radius: 6px;
   background-color: #000000;
+  cursor: pointer;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  text-align: center;
+  align-items: center;
 
-  button {
-    background-color: transparent;
-    border: 0;
+  img {
+    height: 260px;
+    width: 940px;
   }
-  strong {
-    font-size: 20px;
-    color: #ffffff;
+
+  input {
+    display: none;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    strong {
+      font-size: 20px;
+      color: #ffffff;
+    }
+  }
+
+  div.imgMeetup {
+    display: none;
   }
 `

@@ -1,35 +1,62 @@
-import React from 'react'
+import React, { useState, useMemo } from 'react'
+import PropTypes from 'prop-types'
 import { MdCameraAlt, MdAddCircleOutline } from 'react-icons/md'
-import { Form, Input, Textarea } from '@rocketseat/unform'
+import { Form, Input } from '@rocketseat/unform'
 
 import { Container, Content, MImage } from './styles'
 
-export default function NewEdit() {
-  function handleSubmit(data) {
-    console.tron.log(data)
-  }
+export default function NewEdit({ location }) {
+  const meetup = location.state ? location.state : null
+  const [imgMeetup, setImgMeetup] = useState(null)
+
+  const preview = useMemo(() => {
+    return imgMeetup ? URL.createObjectURL(imgMeetup) : null
+  }, [imgMeetup])
+
   return (
     <Container>
       <Content>
-        <MImage>
-          {/* <Input name="imagemMeetup" /> */}
-          <span>
-            <MdCameraAlt size={54} color="#ffffff" />
-          </span>
-          <strong>Selecionar imagem</strong>
+        <MImage
+          style={
+            preview
+              ? { backgroundImage: `url(${preview})` }
+              : {
+                  backgroundImage: meetup
+                    ? `url(${meetup.avatar && meetup.avatar.url})`
+                    : `url(${preview})`,
+                }
+          }
+        >
+          <input
+            type="file"
+            id="avatar"
+            accept="image/*"
+            onChange={event => setImgMeetup(event.target.files[0])}
+          />
+          <div className={preview || meetup ? 'imgMeetup' : ''}>
+            <span>
+              <MdCameraAlt size={54} color="#ffffff" />
+            </span>
+            <strong>Selecionar imagem</strong>
+          </div>
         </MImage>
 
-        <Form onSubmit={handleSubmit}>
-          <Input name="titulo" placeholder="Título do Meetup" />
+        <Form initialData={meetup} onSubmit={() => {}}>
+          <Input name="title" placeholder="Título do Meetup" />
 
-          <Textarea name="descricao" placeholder="Descrição completa" />
+          <Input
+            name="description"
+            placeholder="Descrição completa"
+            multiline
+          />
 
-          <Input name="data" placeholder="Data do meetup" />
+          <Input name="dateFormatted" placeholder="Data do meetup" />
 
-          <Input name="localizacao" placeholder="Localização" />
+          <Input name="location" placeholder="Localização" />
+
           <div>
             <button type="submit">
-              <MdAddCircleOutline size={24} color="#fff" />
+              <MdAddCircleOutline size={20} color="#fff" />
               <strong>Salvar meetup</strong>
             </button>
           </div>
@@ -37,4 +64,10 @@ export default function NewEdit() {
       </Content>
     </Container>
   )
+}
+
+NewEdit.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({}),
+  }).isRequired,
 }

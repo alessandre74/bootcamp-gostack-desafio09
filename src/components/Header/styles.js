@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 `
 
 export const Content = styled.div`

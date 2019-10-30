@@ -22,13 +22,18 @@ export const Content = styled.div`
       padding: 0 15px;
       color: #ffffff;
       margin: 0 0 20px;
-      opacity: 0.2;
+      opacity: 0.4;
       font-size: 18px;
-      font-family: Helvetica;
 
       &::placeholder {
         color: rgba(255, 255, 255, 0.6);
       }
+    }
+    span {
+      color: #f94d6a;
+      margin: 0 0 10px 0;
+      padding: 5px;
+      align-self: flex-start;
     }
 
     hr {
@@ -44,16 +49,14 @@ export const Content = styled.div`
 
       button {
         display: flex;
-        justify-content: flex-end;
+        align-items: center;
         border: 0;
         border-radius: 6px;
         background-color: #f94d6a;
         color: #fff;
-        font-weight: bold;
         padding: 14px 26px;
 
         strong {
-          font-size: 22px;
           margin-left: 10px;
         }
       }

@@ -1,64 +1,86 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { format, parseISO } from 'date-fns'
 import pt from 'date-fns/locale/pt'
+
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md'
-import { Link } from 'react-router-dom'
 
 import api from '~/services/api'
+import history from '~/services/history'
 
-import { Container, MeetupItens } from './styles'
+import { Container, MeetupItens, Content } from './styles'
 
 export default function Dashboard() {
-  const [data, setData] = useState([])
+  const idUser = useSelector(state => state.user.profile.id)
+  const [meetups, setMeetups] = useState([])
+  const flag = meetups.length === 0
 
   useEffect(() => {
     async function loadMeetups() {
-      const response = await api.get('meetups')
+      const response = await api.get(`organizer/${idUser}`)
 
       const dataMeetups = response.data.map(itens => {
         return {
-          id: itens.id,
-          title: itens.title,
-          date: format(parseISO(itens.date), "dd 'de' MMMM', às' H:mm'h'", {
-            locale: pt,
-          }),
+          ...itens,
+          dateFormatted: format(
+            parseISO(itens.date),
+            "dd 'de' MMMM', às' H:mm'h'",
+            {
+              locale: pt,
+            }
+          ),
         }
       })
 
-      setData(dataMeetups)
+      setMeetups(dataMeetups)
     }
 
     loadMeetups()
-  }, [])
+  }, [idUser])
+
+  function handleSubmit() {
+    history.push('newedit')
+  }
+
+  function handleDetails(id) {
+    setMeetups([])
+    history.push(`/details/${id}`)
+  }
 
   return (
     <Container>
-      <header>
-        <strong>Meus meetups</strong>
-        <Link to="/newedit">
-          <button type="button">
-            <MdAddCircleOutline size={24} color="#fff" />
+      <Content>
+        <header>
+          <h1>Meus meetups</h1>
+          <button type="button" onClick={() => handleSubmit()}>
+            <MdAddCircleOutline size={20} color="#fff" />
             <strong>Novo meetup</strong>
           </button>
-        </Link>
-      </header>
+        </header>
+        <ul>
+          {flag ? (
+            <MeetupItens flag>
+              <strong>não há dados para esse usuário</strong>
+            </MeetupItens>
+          ) : (
+            meetups.map(meetup => (
+              <MeetupItens key={meetup.id} pas={meetup.past}>
+                <strong>{meetup.title}</strong>
 
-      <ul>
-        {data.map(iten => (
-          <MeetupItens key={iten.id}>
-            <strong>{iten.title}</strong>
-            <Link
-              to={{
-                pathname: '/details',
-                state: { id: `${iten.id}` },
-              }}
-            >
-              <span>{iten.date}</span>
-              <MdChevronRight size={28} color="#fff" />
-            </Link>
-          </MeetupItens>
-        ))}
-      </ul>
+                <div>
+                  <span>{meetup.dateFormatted}</span>
+
+                  <MdChevronRight
+                    onClick={() => handleDetails(meetup.id)}
+                    size={28}
+                    color="#fff"
+                  />
+                </div>
+              </MeetupItens>
+            ))
+          )}
+        </ul>
+      </Content>
     </Container>
   )
 }

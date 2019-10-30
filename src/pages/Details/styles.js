@@ -17,39 +17,41 @@ export const Content = styled.div`
       align-items: center;
       max-width: 940px;
 
-      strong {
+      h1 {
         width: 100%;
         color: #fff;
-        font-size: 32px;
       }
     }
   }
 
   section {
     margin-top: 50px;
+
     img {
-      border-radius: 6px;
+      height: 300px;
       width: 100%;
+      border-radius: 6px;
+      background: #eee;
+      margin-bottom: 30px;
     }
+
     div {
       width: 100%;
-      padding: 20px 0;
-      color: #fff;
 
+      color: #fff;
       p {
-        font-size: 16px;
+        margin-bottom: 40px;
         text-align: justify;
       }
     }
   }
 `
-
 export const DivButton = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 18px;
 
-  a {
+  button {
     display: flex;
     align-items: center;
     width: 100%;
@@ -67,20 +69,20 @@ export const DivButton = styled.div`
   }
 `
 export const Region = styled.div`
-  margin-top: 20px;
   display: flex;
   align-items: center;
+  margin-top: 20px;
 
   svg {
     height: 20px;
     font-size: 20px;
-    margin-right: 14px;
+    margin-right: 6px;
   }
 
   span {
     height: 19px;
     font-size: 16px;
     color: #999;
-    margin-right: 40px;
+    margin-right: 30px;
   }
 `
