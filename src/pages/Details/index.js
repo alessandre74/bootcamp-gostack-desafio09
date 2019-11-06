@@ -37,12 +37,11 @@ export default function Details({ match }) {
   }, [id])
 
   function handleSubmit(dados) {
-    history.push('/newedit', { ...dados })
+    history.push('/newedit', { ...dados, status: 'edit' })
   }
 
   async function handleCancel() {
     const meetupTitle = meetup.title
-
     try {
       await api.delete(`/meetups/${id}`)
 

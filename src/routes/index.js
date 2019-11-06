@@ -8,6 +8,7 @@ import SignUp from '../pages/SignUp'
 import Dashboard from '../pages/Dashboard'
 import Details from '../pages/Details'
 import NewEdit from '../pages/NewEdit'
+
 import Profile from '../pages/Profile'
 
 export default function Routes() {

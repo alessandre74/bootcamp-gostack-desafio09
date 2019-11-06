@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { format, parseISO } from 'date-fns'
 import pt from 'date-fns/locale/pt'
+import Loader from 'react-loader-spinner'
 
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md'
 
@@ -11,19 +11,18 @@ import history from '~/services/history'
 import { Container, MeetupItens, Content } from './styles'
 
 export default function Dashboard() {
-  const idUser = useSelector(state => state.user.profile.id)
+  const [loading, setLoading] = useState(true)
   const [meetups, setMeetups] = useState([])
-  const flag = meetups.length === 0
 
   useEffect(() => {
     async function loadMeetups() {
-      const response = await api.get(`organizer/${idUser}`)
+      const response = await api.get(`organizer`)
 
-      const dataMeetups = response.data.map(itens => {
+      const data = response.data.map(meetup => {
         return {
-          ...itens,
+          ...meetup,
           dateFormatted: format(
-            parseISO(itens.date),
+            parseISO(meetup.date),
             "dd 'de' MMMM', às' H:mm'h'",
             {
               locale: pt,
@@ -32,14 +31,15 @@ export default function Dashboard() {
         }
       })
 
-      setMeetups(dataMeetups)
+      setMeetups(data)
+      setLoading(false)
     }
 
     loadMeetups()
-  }, [idUser])
+  }, [])
 
   function handleSubmit() {
-    history.push('newedit')
+    history.push('/newedit', { status: 'new' })
   }
 
   function handleDetails(id) {
@@ -58,13 +58,20 @@ export default function Dashboard() {
           </button>
         </header>
         <ul>
-          {flag ? (
+          {loading && (
+            <div className="loading">
+              <Loader type="TailSpin" color="#9a68ed" width={32} height={32} />
+            </div>
+          )}
+
+          {!loading && !meetups.length ? (
             <MeetupItens flag>
               <strong>não há dados para esse usuário</strong>
             </MeetupItens>
           ) : (
+            !loading &&
             meetups.map(meetup => (
-              <MeetupItens key={meetup.id} pas={meetup.past}>
+              <MeetupItens key={meetup.id} past={meetup.past}>
                 <strong>{meetup.title}</strong>
 
                 <div>

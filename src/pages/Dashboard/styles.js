@@ -38,6 +38,11 @@ export const Content = styled.div`
   ul {
     margin-top: 20px;
 
+    .loading {
+      display: flex;
+      justify-content: center;
+    }
+
     span {
       color: #fff;
     }

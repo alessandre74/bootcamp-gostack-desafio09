@@ -13,9 +13,18 @@ const schema = Yup.object().shape({
   email: Yup.string()
     .email('Insira um e-mail válido!')
     .required('O e-mail é obrigatório!'),
-  // oldPassword: Yup.string()
-  //   .min(6, 'No mínimo 6 caracteres!')
-  //   .required('A senha é obrigatória!'),
+  oldPassword: Yup.string().when('password', (password, field) =>
+    password ? field.required('Senha atual é requerida!') : field
+  ),
+  password: Yup.string()
+    .transform(value => (!value ? null : value))
+    .nullable()
+    .min(6, 'A senha deve ter pelo menos 6 caracteres!'),
+  confirmPassword: Yup.string().when('password', (password, field) =>
+    password
+      ? field.required().oneOf([Yup.ref('password')], 'Senhas não conferem!')
+      : field
+  ),
 })
 
 export default function Profile() {
@@ -35,9 +44,9 @@ export default function Profile() {
           <hr />
 
           <Input name="oldPassword" type="password" placeholder="Senha atual" />
-          <Input name="newPassword" type="password" placeholder="Nova senha" />
+          <Input name="password" type="password" placeholder="Nova senha" />
           <Input
-            name="ConfirmPassword"
+            name="confirmPassword"
             type="password"
             placeholder="Confirmação de senha"
           />

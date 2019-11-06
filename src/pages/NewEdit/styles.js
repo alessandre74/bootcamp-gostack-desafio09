@@ -14,7 +14,6 @@ export const Content = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
 
     input {
       height: 50px;
@@ -79,6 +78,7 @@ export const MImage = styled.label`
   opacity: 0.4;
   border-radius: 6px;
   background-color: #000000;
+  margin-bottom: 20px;
   cursor: pointer;
 
   display: flex;

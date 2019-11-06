@@ -7,7 +7,6 @@ import { updateProfileSuccess, updateProfileFailure } from './actions'
 
 export function* updateProfile({ payload }) {
   try {
-    console.tron.log('aqui')
     const { name, email, ...rest } = payload.data
 
     const profile = { name, email, ...(rest.oldPassword ? rest : {}) }
