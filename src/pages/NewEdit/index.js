@@ -1,9 +1,11 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { MdCameraAlt, MdAddCircleOutline } from 'react-icons/md'
 import { Form, Input } from '@rocketseat/unform'
+import DatePicker from '~/components/DatePicker'
+
 import api from '~/services/api'
-import { Container, Content, MImage } from './styles'
+import { Container, Content, MImage, DivSaveButton } from './styles'
 
 export default function NewEdit({ location }) {
   const meetup = location.state ? location.state : null
@@ -56,6 +58,7 @@ export default function NewEdit({ location }) {
           <MImage
             htmlFor="banner"
             style={{ backgroundImage: `url(${preview})` }}
+            status={meetup.status}
           >
             <input
               type="file"
@@ -85,20 +88,24 @@ export default function NewEdit({ location }) {
             placeholder="Descrição completa"
             multiline
           />
-
+          {/*
           <Input
+            type="date"
+            name={meetup.status === 'edit' ? 'dateFormatted' : 'date'}
+            placeholder="Data do meetup"
+          /> */}
+          <DatePicker
             name={meetup.status === 'edit' ? 'dateFormatted' : 'date'}
             placeholder="Data do meetup"
           />
-
           <Input name="location" placeholder="Localização" />
 
-          <div>
+          <DivSaveButton marginTop="8px">
             <button type="submit">
               <MdAddCircleOutline size={20} color="#fff" />
               <strong>Salvar meetup</strong>
             </button>
-          </div>
+          </DivSaveButton>
         </Form>
       </Content>
     </Container>

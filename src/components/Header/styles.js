@@ -22,11 +22,11 @@ export const Content = styled.div`
 
     button {
       border: 0;
-      border-radius: 6px;
+      border-radius: 4px;
       background-color: #d44059;
       color: #fff;
       font-weight: bold;
-      padding: 14px 26px;
+      padding: 10px 22px;
     }
   }
 `

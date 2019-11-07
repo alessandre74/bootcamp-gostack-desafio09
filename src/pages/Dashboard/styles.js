@@ -23,11 +23,11 @@ export const Content = styled.div`
       display: flex;
       align-items: center;
       border: 0;
-      border-radius: 6px;
+      border-radius: 4px;
       background-color: #f94d6a;
       color: #fff;
       font-weight: bold;
-      padding: 14px 26px;
+      padding: 10px 22px;
 
       strong {
         font-size: 16px;
@@ -36,7 +36,7 @@ export const Content = styled.div`
     }
   }
   ul {
-    margin-top: 20px;
+    margin-top: 40px;
 
     .loading {
       display: flex;
@@ -50,11 +50,12 @@ export const Content = styled.div`
 `
 
 export const MeetupItens = styled.li`
-  background-color: rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
-  font-size: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+  font-weight: bold;
   height: ${props => (props.flag ? '400px' : '62px')};
   padding: 14px 22px;
+  border-radius: 6px;
 
   display: flex;
   justify-content: ${props => (props.flag ? 'center' : 'space-between')};

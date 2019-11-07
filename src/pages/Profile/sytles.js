@@ -14,19 +14,17 @@ export const Content = styled.div`
 
     input {
       height: 50px;
-      max-width: 940px;
-      font-weight: bold;
       background-color: #000000;
+      font-weight: bold;
       border: 0;
       border-radius: 4px;
       padding: 0 15px;
       color: #ffffff;
-      margin: 0 0 20px;
+      margin: 0 0 8px;
       opacity: 0.4;
-      font-size: 18px;
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.6);
+        color: #ffffff;
       }
     }
     span {
@@ -37,29 +35,11 @@ export const Content = styled.div`
     }
 
     hr {
-      margin-bottom: 20px;
-      height: 1px;
+      border: 0;
+      margin: 20px 0 20px 0;
+      height: 2px;
       opacity: 0.1;
       background-color: #ffffff;
-    }
-
-    div {
-      display: flex;
-      justify-content: flex-end;
-
-      button {
-        display: flex;
-        align-items: center;
-        border: 0;
-        border-radius: 6px;
-        background-color: #f94d6a;
-        color: #fff;
-        padding: 14px 26px;
-
-        strong {
-          margin-left: 10px;
-        }
-      }
     }
   }
 `

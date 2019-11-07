@@ -7,6 +7,7 @@ import { MdAddCircleOutline } from 'react-icons/md'
 import { Container, Content } from './sytles'
 
 import { updateProfileRequest } from '~/store/modules/user/actions'
+import { DivSaveButton } from '../NewEdit/styles'
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório!'),
@@ -50,12 +51,12 @@ export default function Profile() {
             type="password"
             placeholder="Confirmação de senha"
           />
-          <div>
+          <DivSaveButton marginTop="8px">
             <button type="submit">
               <MdAddCircleOutline size={20} color="#fff" />
               <strong>Salvar perfil</strong>
             </button>
-          </div>
+          </DivSaveButton>
         </Form>
       </Content>
     </Container>
