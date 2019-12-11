@@ -7,7 +7,6 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   padding: 0 20px;
-  max-width: 940px;
 
   form {
     display: flex;
@@ -36,45 +35,16 @@ export const Content = styled.div`
       height: 140px;
       padding: 15px;
     }
-  }
-`
-export const MImage = styled.label`
-  height: 260px;
-  width: 100%;
-  opacity: ${props => (props.status === 'edit' ? 'none' : '0.4')};
-  background: ${props => (props.status === 'edit' ? 'none' : '#000000')};
-  border-radius: 6px;
-  margin-bottom: 20px;
-  cursor: pointer;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    height: 260px;
-    width: 940px;
-  }
-
-  input {
-    display: none;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    strong {
-      font-size: 20px;
-      color: #ffffff;
+    span {
+      color: #f94d6a;
+      margin: 0 0 5px 0;
+      padding: 5px;
+      align-self: flex-start;
     }
   }
-
-  div.imgMeetup {
-    display: none;
-  }
 `
+
 export const DivSaveButton = styled.div`
   display: flex;
   justify-content: flex-end;

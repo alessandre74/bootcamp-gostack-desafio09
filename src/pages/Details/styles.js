@@ -37,7 +37,6 @@ export const Content = styled.div`
 
     div {
       width: 100%;
-
       color: #fff;
       p {
         margin-bottom: 40px;

@@ -37,7 +37,11 @@ export default function Details({ match }) {
   }, [id])
 
   function handleSubmit(dados) {
-    history.push('/newedit', { ...dados, status: 'edit' })
+    history.push('/newedit', {
+      ...dados,
+      date: parseISO(dados.date),
+      status: 'edit',
+    })
   }
 
   async function handleCancel() {
